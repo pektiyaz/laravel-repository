@@ -2,6 +2,7 @@
 
 namespace Pektiyaz\LaravelRepository;
 
+use Carbon\CarbonImmutable;
 use Illuminate\Support\Str;
 use Pektiyaz\RepositoryContracts\EntityContract;
 use ReflectionClass;
@@ -25,7 +26,7 @@ abstract class AbstractEntity implements EntityContract
 
     public function getCreatedAt(): ?string
     {
-        return $this->created_at ?? null;
+        return $this->created_at ?? CarbonImmutable::now()->toString();
     }
 
     public function setCreatedAt(?string $created_at): void
@@ -35,7 +36,7 @@ abstract class AbstractEntity implements EntityContract
 
     public function getUpdatedAt(): ?string
     {
-        return $this->updated_at ?? null;
+        return $this->updated_at ?? CarbonImmutable::now()->toString();
     }
 
     public function setUpdatedAt(?string $updated_at): void
