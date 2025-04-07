@@ -23,9 +23,9 @@ abstract class AbstractEntity implements EntityContract
         $this->id = $id;
     }
 
-    public function getCreatedAt(): string
+    public function getCreatedAt(): ?string
     {
-        return $this->created_at ?? '';
+        return $this->created_at ?? null;
     }
 
     public function setCreatedAt(?string $created_at): void
@@ -33,9 +33,9 @@ abstract class AbstractEntity implements EntityContract
         $this->created_at = $created_at;
     }
 
-    public function getUpdatedAt(): string
+    public function getUpdatedAt(): ?string
     {
-        return $this->updated_at ?? '';
+        return $this->updated_at ?? null;
     }
 
     public function setUpdatedAt(?string $updated_at): void
