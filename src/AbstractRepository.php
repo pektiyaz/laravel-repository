@@ -189,7 +189,6 @@ abstract class AbstractRepository implements RepositoryContract
         $entity = $this->convertToEntity($item);
         if ($item) {
             $item->restore();
-            Event::dispatch($this->event_prefix.'.entity.restored', $entity);
             $this->dispatchEvent('restored', $entity);
         }
 
