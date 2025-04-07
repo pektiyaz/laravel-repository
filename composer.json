@@ -1,0 +1,22 @@
+{
+    "name": "pektiyaz/laravel-repository",
+    "description": "Repository implement for Laravel Framework",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Pektiyaz\\LaravelRepository\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Pektiyaz Talibov",
+            "email": "pektiyaztalibov@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "illuminate/support": "^9.0 || ^10.0 || ^11.0 || ^12.0",
+        "pektiyaz/repository-contracts": "^1.0"
+    }
+}
