@@ -2,6 +2,7 @@
 
 namespace Pektiyaz\LaravelRepository;
 
+use Illuminate\Support\Str;
 use Pektiyaz\RepositoryContracts\EntityContract;
 use ReflectionClass;
 use ReflectionMethod;
@@ -55,10 +56,10 @@ abstract class AbstractEntity implements EntityContract
             $name = $method->name;
 
             if (str_starts_with($name, 'get')) {
-                $key = lcfirst(substr($name, 3)); // getTitle → title
+                $key = Str::snake(substr($name, 3)); // getTitle → title
                 $data[$key] = $this->$name();
             } elseif (str_starts_with($name, 'is')) {
-                $key = lcfirst(substr($name, 2)); // isActive → active
+                $key = Str::snake(substr($name, 2)); // isActive → active
                 $data[$key] = $this->$name();
             }
         }
@@ -74,7 +75,7 @@ abstract class AbstractEntity implements EntityContract
     public function fromArrayData(array $item): static
     {
         foreach ($item as $key => $value) {
-            $camelKey = ucfirst($key); // 'active' → 'Active'
+            $camelKey = Str::camel($key); // 'active' → 'Active'
 
             $setter = 'set' . $camelKey;
             $altSetter = 'setIs' . $camelKey;
