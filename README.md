@@ -29,7 +29,20 @@ composer require pektiyaz/laravel-repository
 
 ```php
 use Pektiyaz\LaravelRepository\AbstractRepository;
-
+/**
+ * @method PostEntity findById(int|string $id)
+ * @method PostEntity findOneBy(array $conditions)
+ * @method PostEntity[] findAllBy(array $conditions)
+ * @method PostEntity[] findAll()
+ * @method PostEntity create(array $data)
+ * @method PostEntity restore(int $id)
+ * @method PostEntity[] paginate(int $page, int $perPage, array $conditions = [])
+ * @method PostEntity[] findTrashed()
+ * @method PostEntity findTrashedById(int|string $id)
+ * @method PostEntity[] findByCallback(callable $callback)
+ * @method PostEntity[] bulkCreate(array $records)
+ * @method PostEntity[] filter(QueryFilterContract $filter)
+ */
 class PostRepository extends AbstractRepository
 {
     public function getModel(): string
@@ -73,7 +86,6 @@ class PostEntity extends AbstractEntity
     // Add other fields as needed...
 }
 ```
-
 
 
 ## 🧠 Concepts
