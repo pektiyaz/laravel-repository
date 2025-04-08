@@ -152,7 +152,7 @@ abstract class AbstractRepository implements RepositoryContract
      */
     protected function mapToEntity(object $item): ?EntityContract
     {
-        return $this->entity->fromArrayData($item->toArray());
+        return clone $this->entity->fromArrayData($item->toArray());
     }
 
     /**
