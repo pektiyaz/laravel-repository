@@ -83,7 +83,8 @@ abstract class AbstractRepository implements RepositoryContract
      */
     public function create(array $data): EntityContract
     {
-        $item = $this->model->create($data);
+        $entity = $this->entity->fromArrayData($data);
+        $item = $this->model->create($entity->toArray());
 
         $entity = $this->convertToEntity($item);
         // Dispatch event after creation
@@ -104,7 +105,7 @@ abstract class AbstractRepository implements RepositoryContract
         $item = $this->model->find($id);
 
         if ($item) {
-            $entity = $this->convertToEntity($item);
+            $entity = $this->entity->fromArrayData($data);
             $item->update($entity->toArray());
             $this->dispatchEvent('updated', $entity);
             return true;
