@@ -105,7 +105,7 @@ abstract class AbstractRepository implements RepositoryContract
         $item = $this->model->find($id);
 
         if ($item) {
-            $entity = $this->entity->fromArrayData($data);
+            $entity = $this->entity->fromArrayData(array_merge($item->toArray(), $data));
             $item->update($entity->toArray());
             $this->dispatchEvent('updated', $entity);
             return true;
